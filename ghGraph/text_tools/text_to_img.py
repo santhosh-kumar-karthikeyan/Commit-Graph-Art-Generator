@@ -3,9 +3,8 @@ import numpy as np
 
 #creating a new image in black background and filling it with white text
 def getTextImage(text: str, fontPath: str):    
-    tempImage = Image.new(mode = 'RGB',size = (100,100),color = '#000000')
-    draw = ImageDraw.Draw(tempImage)
-    font = ImageFont.truetype(fontPath,15)
+   # draw = ImageDraw.Draw(tempImage)
+   # font = ImageFont.truetype(fontPath,15)
     
     #looping to find the suitable font size
     imgWidth, imgHeight = 520,70
@@ -24,8 +23,7 @@ def getTextImage(text: str, fontPath: str):
         except OSError:
             fontSize -= 1
             break
-    bgImage = Image.new(mode = 'L', size= (currWidth, currHeight), color = "#000000")
+    bgImage = Image.new(mode = 'L', size= (imgWidth, imgHeight), color = "#000000")
     draw = ImageDraw.Draw(bgImage)
     draw.text((0,0),text,font = font,fill='white')
-    bgImage.show()
     return bgImage
